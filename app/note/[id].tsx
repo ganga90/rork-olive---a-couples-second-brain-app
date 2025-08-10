@@ -50,6 +50,18 @@ export default function NoteDetailScreen() {
 
         <Text style={styles.summary}>{note.summary}</Text>
         
+        {Array.isArray(note.items) && note.items.length > 0 && (
+          <View style={styles.itemsContainer}>
+            <Text style={styles.itemsTitle}>Items</Text>
+            {note.items.map((it, idx) => (
+              <View key={`${note.id}-item-${idx}`} style={styles.itemRow}>
+                <View style={styles.bullet} />
+                <Text style={styles.itemText}>{it}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+
         <View style={styles.originalContainer}>
           <Text style={styles.originalLabel}>Original note:</Text>
           <Text style={styles.originalText}>{note.originalText}</Text>
@@ -139,6 +151,35 @@ const styles = StyleSheet.create({
     color: colors.text,
     marginBottom: 20,
     lineHeight: 28,
+  },
+  itemsContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+  },
+  itemsTitle: {
+    fontSize: 12,
+    color: colors.textSecondary,
+    marginBottom: 8,
+    textTransform: "uppercase",
+    letterSpacing: 0.5,
+  },
+  itemRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 6,
+  },
+  bullet: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.olive,
+    marginRight: 8,
+  },
+  itemText: {
+    fontSize: 16,
+    color: colors.text,
   },
   originalContainer: {
     backgroundColor: "#fff",

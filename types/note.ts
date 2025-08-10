@@ -10,6 +10,7 @@ export interface Note {
   completed: boolean;
   priority?: "low" | "medium" | "high";
   tags?: string[];
+  items?: string[];
 }
 
 export interface ProcessedNote {
@@ -18,4 +19,5 @@ export interface ProcessedNote {
   dueDate?: string;
   tags?: string[];
   priority?: "low" | "medium" | "high";
+  items?: string[];
 }
